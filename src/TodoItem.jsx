@@ -1,9 +1,22 @@
+import { useState } from "react"
 import { TodoCategories } from "./TodoCategories"
 
 
 
 
 export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
+
+  const [categories, setCategories] = useState('')
+
+  const onAddCategory = (newCategory) => {
+    if(categories.includes(newCategory)) return;
+
+    setCategories({ newCategory});
+
+  }
+
+  
+
   return (
 
     <>
@@ -21,7 +34,7 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
         >Borrar</button>
     </li>
     
-    <TodoCategories/>
+    <TodoCategories onNewCategory = { (onAddCategory )}/>
     </>
   )
 }

@@ -1,23 +1,37 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
 
-export const TodoCategories = () => {
+export const TodoCategories = ({ onNewCategory }) => {
 
-  const marcarCategoria = () => {
-    console.log('categoria marcada')
+  
+  const [inputValue, setInputValue] = useState('')
+  
+  const marcarCategoria = (e) => {
+    
+    setInputValue(e.target.value)
+
+
   }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if( inputValue.trim().length <= 1) return;
+
+    onNewCategory( inputValue.trim());
+    setInputValue('');
+    console.log(inputValue)
+  }
+
   return (
     <>
-    
-    <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Categorias
-  </button>
-  <ul className="dropdown-menu dropdown-menu-dark">
-    <li><Link className="dropdown-item" onClick={marcarCategoria}>Trabajo</Link></li>
-    <li><Link className="dropdown-item" onClick={marcarCategoria}>Hogar</Link></li>
-    <li><Link className="dropdown-item" onClick={marcarCategoria}>Ocio</Link></li>
-  </ul>
-</div>
+      <form onSubmit={onSubmit} className="m-1">
+
+        <input type="text" placeholder="define una categoria" value={inputValue} onChange={marcarCategoria} />
+
+        <input type="submit" className="btn btn-dark" />
+        
+      </form>
+
+
     </>
    
       
@@ -28,6 +42,16 @@ export const TodoCategories = () => {
 
 
 
+//    <div className="dropdown">
+//  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+//    Categorias
+//  </button>
+//  <ul className="dropdown-menu dropdown-menu-dark" onClick={marcarCategoria}>
+//    <li className="dropdown-item" value='trabajo'>Trabajo</li>
+//    <li><Link className="dropdown-item" value='hogar' >Hogar</Link></li>
+//    <li><Link className="dropdown-item" value='ocio' >Ocio</Link></li>
+//  </ul>
+//</div>
 
 
 
