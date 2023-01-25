@@ -33,7 +33,7 @@ export const TodoForm = ({ onNewTodo }) => {
 
             <button 
                 type="submit"
-                className="btn btn-outline-primary mt-1"
+                className="btn btn-secondary m-1"
             >
                 Agregar
             </button>
