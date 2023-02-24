@@ -3,7 +3,7 @@ import { useForm } from "./useForm"
 export const TodoForm = ({ onNewTodo }) => {
 
     const { description, onInputChange, onResetForm } = useForm({
-        description: ''
+        description: '',
     });
 
     const onFormSubmit = ( event ) => {
@@ -14,14 +14,19 @@ export const TodoForm = ({ onNewTodo }) => {
             id: new Date().getTime(),
             done: false,
             description: description,
+            category: '',
         }
 
         onNewTodo(newTodo);
         onResetForm();
     }
 
+    
 
     return (
+
+        <>
+        <div className="formulario mt-2">
         <form onSubmit={ onFormSubmit }>
             <input 
                 type="text" 
@@ -29,15 +34,23 @@ export const TodoForm = ({ onNewTodo }) => {
                 name="description"
                 value={ description }
                 onChange={ onInputChange }
+                className="input"
             />
 
             <button 
                 type="submit"
-                className="btn btn-secondary m-1"
+                className="boton m-1"
             >
                 Agregar
             </button>
         </form>
+        </div>
+        
+
+        
+        
+        </>
+    
     )
 }
 

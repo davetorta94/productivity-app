@@ -1,21 +1,34 @@
+
 import { useState } from "react"
 
 
 
 
-export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
 
-  const [categories, setCategories] = useState('')
-  
-  
+export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) => {
+
+
+
+  const [inputValue, setInputValue] = useState('')
+
+
 
   const onAddCategory = (e) => {
     
-    //if(categories.includes(e)) return;
-
-    setCategories(e.target.value)
+    setInputValue(e.target.value)
+    
 
   }
+
+    const addCategoryToTodo = (e) => {
+    e.preventDefault()
+    todo.category = inputValue;
+    onNewCategory(inputValue)
+    console.log(todo.category)
+  }
+
+ 
+  
 
 
   
@@ -24,38 +37,50 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
 
     <>
     
-    <li className={`list-group-item d-flex justify-content-between ${ (categories) === 'trabajo' ? 'bg-primary' : (categories) === 'ocio' ? 'bg-warning' : (categories) === 'hogar' ? 'bg-info' : ''}`}>
-        <span 
-          className={`align-self-center ${ (todo.done) ? 'text-decoration-line-through' : ''  }`}
-          onClick={ () => onToggleTodo( todo.id ) }
-        >
-          { todo.description }
-        </span>
+    <div className="row">
+      <div className="col-8 lista-tareas p-0">
+        <li className={`list-group-item d-flex justify-content-between ${ (todo.category) === 'trabajo' ? 'bg-primary' : (todo.category) === 'ocio' ? 'bg-warning' : (todo.category) === 'hogar' ? 'bg-info' : ''}`}>
+              <span 
+                className={`align-self-center ${ (todo.done) ? 'text-decoration-line-through' : ''  }`}
+                onClick={ () => onToggleTodo( todo.id ) }
+              >
+                { todo.description }
+              </span>
 
-    <div>
+        
+          <div className="input-categoria">
+            <form onSubmit={addCategoryToTodo}>
+              <input type="text" value={inputValue} onChange={onAddCategory} placeholder="Categoria?" />
+                <button type="submit" className="boton">Añadir</button>
+            </form>
+          </div>
 
-      <input type="button" value="trabajo" className="btn btn-secondary text-primary font-weight-bold btn-sm m-1" onClick={onAddCategory} />
+              <button 
+                className="btn btn-danger boton-eliminar"
+                onClick={ () => onDeleteTodo( todo.id ) }
+                >Borrar
+              </button>
+          </li>
+      </div>
 
-      <input type="button" value="ocio" className="btn btn-secondary text-warning btn-sm m-1" onClick={onAddCategory} />
-
-      <input type="button" value="hogar" className="btn btn-secondary text-info btn-sm m-1" onClick={onAddCategory} />
+      <div className="col-1">
+        <button
+          className="btn btn-danger boton-externo"
+          onClick={ () => onDeleteTodo( todo.id ) }>
+          X
+        </button>
+      </div>
+        
         
     </div>
-
-        <button 
-          className="btn btn-danger"
-          onClick={ () => onDeleteTodo( todo.id ) }
-        >Borrar</button>
-    </li>
-
-    
-
-      
-      
 
   
     
     </>
   )
 }
+
+
+
+ 
 

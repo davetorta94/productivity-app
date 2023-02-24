@@ -49,14 +49,36 @@ export const useTodos = () => {
         dispatch( action );
     }
 
+
+
+    const handleFilterTodo = (category) => {
+        const action = {
+            type: 'FILTER TODO',
+            payload: category,
+        }
+
+        dispatch(action)
+    }
+
     return {
         todos,
         todosCount: todos.length,
         pendingTodosCount: todos.filter( todo => !todo.done).length,
         handleDeleteTodo,
         handleNewTodo,
-        handleToggleTodo
+        handleToggleTodo,
+        handleFilterTodo
     }
     
 
 }
+
+
+//const handleCategoryTodo = (category) => {
+    //    const action = {
+    //        type: 'CATEGORIZE TODO',
+    //        payload:  category,
+    //    }
+//
+    //    dispatch(action)
+    //}
