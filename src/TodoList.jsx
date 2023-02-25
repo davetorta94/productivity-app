@@ -58,7 +58,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
       { !isFiltered ? (
       <>
             <div className="row">
-               <div className="col-12 mx-5 mb-2 d-flex justify-content-center">
+               <div className="col-12 mb-2 d-flex justify-content-center">
                          <form onSubmit={filtrarCategorias}>
                            <input type="text" className="input" value={inputValue} onChange={addCategoryToInput} />
                            <span className="mx-1">
