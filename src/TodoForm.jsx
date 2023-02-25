@@ -26,7 +26,7 @@ export const TodoForm = ({ onNewTodo }) => {
     return (
 
         <>
-        <div className="formulario mt-2">
+        <div className="formulario mt-2 d-flex justify-content-center">
         <form onSubmit={ onFormSubmit }>
             <input 
                 type="text" 
