@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react"
+//import { useTodos } from "./useTodos"
 
-import { useState } from "react"
 
 
 
@@ -11,26 +12,31 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
 
   const [inputValue, setInputValue] = useState('')
 
+  const categories = [];
 
 
   const onAddCategory = (e) => {
     
     setInputValue(e.target.value)
-    
+    console.log(inputValue)
 
   }
-
-    const addCategoryToTodo = (e) => {
-    e.preventDefault()
-    todo.category = inputValue;
-    onNewCategory(inputValue)
-    console.log(todo.category)
-  }
-
  
   
+  //useEffect(() => {
+  //  localStorage.setItem('todos', JSON.stringify( todos ) );
+  //}, [inputValue])
 
+  useEffect(() => {
+    todo.category = inputValue
+    onNewCategory(inputValue)
+  }, [inputValue])
 
+ 
+  const avoidRender = (e) => {
+      e.preventDefault()
+  }
+  
   
 
   return (
@@ -49,9 +55,9 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
 
         
           <div className="input-categoria">
-            <form onSubmit={addCategoryToTodo}>
+            <form onSubmit={avoidRender}>
               <input type="text" value={inputValue} onChange={onAddCategory} placeholder="Categoria?" />
-                <button type="submit" className="boton">Añadir</button>
+                
             </form>
           </div>
 
@@ -83,4 +89,8 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
 
 
  
+
+//onSubmit={addCategoryToTodo}
+
+//<button type="submit" className="boton">Añadir</button> ESTABA DENTRO DE INPUT CATEGORIA
 

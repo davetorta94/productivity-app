@@ -1,10 +1,8 @@
 import {useTodos} from './useTodos'
 import { TodoForm } from './TodoForm';
 import { TodoList } from './TodoList';
-//import { TodoFilter } from './TodoFilter';
 import { UserProvider } from './context/UserProvider';
-import { useState } from 'react';
-import { TodoFilter } from './TodoFilter';
+import { useEffect, useState } from 'react';
 
 
 
@@ -20,8 +18,13 @@ export const TodoApp = () => {
     setCategories( newCategory)
     }
 
-    const prueba = todos.toString()
+    //useEffect(() => {
+    //localStorage.setItem('todos', JSON.stringify( todos ) );
+    //  }, [todos])
+
     
+
+      
 
   return (
     <>

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { TodoFilter } from "./TodoFilter";
+import { useEffect, useState } from "react";
 import { TodoItem } from "./TodoItem"
 
 
@@ -17,12 +16,15 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
   let [inputValue, setInputValue] = useState([])
 
 
+
   const addCategoryToInput = (e) => {
     e.preventDefault();
     setInputValue(e.target.value)
    
   }
 
+
+  
   
 
 
@@ -30,9 +32,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     
     e.preventDefault();
 
-
     const filtrado = todos.filter(todo => todo.category === inputValue)
-
 
     setState(filtrado)
 

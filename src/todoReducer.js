@@ -9,16 +9,6 @@ export const todoReducer = (initialState = [], action ) => {
         case 'REMOVE TODO':
             return initialState.filter( todo => todo.id !== action.payload);
 
-        //case 'CATEGORIZE TODO':
-        //    return initialState.map(todo => {
-        //        return{
-        //            ...todo,
-        //            category: action.payload,
-        //        }
-        //    })
-
-        case 'FILTER TODO':
-            return initialState.filter( todo => todo.category === action.payload);
 
         case 'TOGGLE TODO':
             return initialState.map(todo => {
@@ -38,3 +28,15 @@ export const todoReducer = (initialState = [], action ) => {
     }
 }
 
+
+
+//case 'CATEGORIZE TODO':
+        //    return initialState.map(todo => {
+        //        return{
+        //            ...todo,
+        //            category: action.payload,
+        //        }
+        //    })
+
+       // case 'FILTER TODO':
+       //     return initialState.filter( todo => todo.category === action.payload);

@@ -3,10 +3,7 @@ import { todoReducer } from "./todoReducer";
 
 const initialState = [];
 
-//const init = () => {
-//    return JSON.parse(localStorage.getItem('todos')) || []; //si no devuelve algo devolvera un arreglo vacio. NO ME FUNCIONA A MI
-//    
-//}
+
 
 const init = () => {
     return JSON.parse(localStorage.getItem('todos')) || [];
@@ -18,6 +15,7 @@ export const useTodos = () => {
 
     useEffect(() => {
       localStorage.setItem('todos', JSON.stringify( todos ) );
+      console.log(todos)
     }, [todos])
     
 
