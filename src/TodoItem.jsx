@@ -1,41 +1,28 @@
-import { useEffect, useState } from "react"
-//import { useTodos } from "./useTodos"
+import { useState } from "react"
 
 
-
-
-
-
-export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) => {
+export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory, updatedTodos }) => {
 
 
 
   const [inputValue, setInputValue] = useState('')
 
-  const categories = [];
 
+
+  
 
   const onAddCategory = (e) => {
-    
     setInputValue(e.target.value)
-    console.log(inputValue)
-
+    
+    
   }
- 
-  
-  //useEffect(() => {
-  //  localStorage.setItem('todos', JSON.stringify( todos ) );
-  //}, [inputValue])
 
-  useEffect(() => {
-    todo.category = inputValue
-    onNewCategory(inputValue)
-  }, [inputValue])
+  const updateNewTodo = () => {
+    const updatedTodo = { ...todo, category: inputValue }
+    updatedTodos(updatedTodo)
+  }
 
  
-  const avoidRender = (e) => {
-      e.preventDefault()
-  }
   
   
 
@@ -45,7 +32,7 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
     
     <div className="row">
       <div className="col-8 lista-tareas p-0">
-        <li className={`list-group-item d-flex justify-content-between ${ (todo.category) === 'trabajo' ? 'bg-primary' : (todo.category) === 'ocio' ? 'bg-warning' : (todo.category) === 'hogar' ? 'bg-info' : ''}`}>
+        <li className={`list-group-item d-flex justify-content-between ${ (todo.category) === 'trabajo' ? 'bg-trabajo' : (todo.category) === 'ocio' ? 'bg-ocio' : (todo.category) === 'hogar' ? 'bg-hogar' : ''}`}>
               <span 
                 className={`align-self-center ${ (todo.done) ? 'text-decoration-line-through' : ''  }`}
                 onClick={ () => onToggleTodo( todo.id ) }
@@ -55,11 +42,16 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
 
         
           <div className="input-categoria">
-            <form onSubmit={avoidRender}>
-              <input type="text" value={inputValue} onChange={onAddCategory} placeholder="Categoria?" />
+            <form onSubmit={updateNewTodo}>
+              <input type="text" value={inputValue} onChange={onAddCategory} placeholder="¿Categoria?" />
                 
             </form>
+              {todo.category ? <div className="mx-4 my-2 category-style"><p>{todo.category}</p></div> : <p></p>
+
+              }
           </div>
+
+          
 
               <button 
                 className="btn btn-danger boton-eliminar"
@@ -85,12 +77,3 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory }) =>
     </>
   )
 }
-
-
-
- 
-
-//onSubmit={addCategoryToTodo}
-
-//<button type="submit" className="boton">Añadir</button> ESTABA DENTRO DE INPUT CATEGORIA
-

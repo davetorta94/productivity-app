@@ -18,10 +18,8 @@ export const TodoApp = () => {
     setCategories( newCategory)
     }
 
-    //useEffect(() => {
-    //localStorage.setItem('todos', JSON.stringify( todos ) );
-    //  }, [todos])
-
+    
+    
     
 
       
@@ -55,6 +53,7 @@ export const TodoApp = () => {
                 onDeleteTodo={ (id) => handleDeleteTodo(id) }
                 onToggleTodo={handleToggleTodo }
                 onNewCategory={ (value) => onAddCategory(value)}
+                
                 />
 
         </div>
@@ -69,12 +68,3 @@ export const TodoApp = () => {
 
   )
 }
-
-//<div className="col-2">
-//    <TodoFilter onNewFilter={ handleFilterTodo }/>
-//</div>
-
-//<div className="col-2" >
-//  <TodoFilter onNewFilter={handleFilterTodo}
-//               todos={todos} />
-// </div>

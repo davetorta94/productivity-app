@@ -15,6 +15,18 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
   
   let [inputValue, setInputValue] = useState([])
 
+  const [categorisedTodos, setCategorisedTodos] = useState(todos)
+
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify( categorisedTodos ) );
+
+  
+}, [categorisedTodos])
+
+  
+
 
 
   const addCategoryToInput = (e) => {
@@ -22,6 +34,21 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     setInputValue(e.target.value)
    
   }
+
+  const updatedTodos = (updatedTodo)=> {
+    const todosUpdated = categorisedTodos.map(todo => {
+    if (todo.id === updatedTodo.id) {
+      return updatedTodo;
+    } else {
+      return todo;
+    }
+  })
+
+  setCategorisedTodos(todosUpdated)
+
+  console.log(todosUpdated)
+};
+
 
 
   
@@ -32,7 +59,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     
     e.preventDefault();
 
-    const filtrado = todos.filter(todo => todo.category === inputValue)
+    const filtrado = categorisedTodos.filter(todo => todo.category === inputValue)
 
     setState(filtrado)
 
@@ -68,7 +95,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
                      </div>
                </div>
               
-                <div className="col-8">
+                <div className="col-8 mt-4">
                   <ul className="list-group">
                      {
                          todos.map( todo => (
@@ -78,6 +105,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
                                onDeleteTodo={ onDeleteTodo } 
                                onToggleTodo={ onToggleTodo }
                                onNewCategory={ onNewCategory }
+                               updatedTodos={updatedTodos}
 
                                />
                            ))
@@ -141,5 +169,3 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     
   )
 }
-
-

@@ -24,17 +24,4 @@ export const NavBar = () => {
 }
 
 
-//<NavLink className={ ({isActive}) =>  `nav-link ${ isActive ? 'active' : '' }`}
-//          to="/">
-//            Home
-//         </NavLink>
-//
-//         <NavLink className={ ({isActive}) =>  `nav-link ${ isActive ? 'active' : '' }`}
-//           to="/login">
-//            Login
-//         </NavLink>
-//
-//         <NavLink className={ ({isActive}) =>  `nav-link ${ isActive ? 'active' : '' }`}
-//           to="/search">
-//            Buscar Tareas
-//         </NavLink>
+

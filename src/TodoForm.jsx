@@ -19,6 +19,7 @@ export const TodoForm = ({ onNewTodo }) => {
 
         onNewTodo(newTodo);
         onResetForm();
+        window.location.reload()
     }
 
     
@@ -53,11 +54,3 @@ export const TodoForm = ({ onNewTodo }) => {
     
     )
 }
-
-
-
-
-
-
-
-
