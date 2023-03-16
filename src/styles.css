@@ -109,6 +109,10 @@ background-color: #461c70;
 color: #fff;
 }
 
+.btncategoria{
+display: none;
+}
+
 @media only screen and (max-width: 990px) {
   .boton-eliminar {
       display: none;
@@ -126,9 +130,14 @@ color: #fff;
   .boton-externo{
       display: flex;
   }
+  .btncategoria{
+    display: inline;
+  }
  
   
 }
+
+
 
 
 @media only screen and (max-width: 780px) {

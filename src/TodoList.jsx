@@ -80,7 +80,7 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     <div className="container-fluid w-100 mt-5">
 
       
-      <div className="row d-flex contenedor-tareas mt-3">
+      <div className="row d-flex contenedor-tareas mt-3 mb-2">
         
       { !isFiltered ? (
       <>
@@ -169,3 +169,5 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo, onNewCategory
     
   )
 }
+
+

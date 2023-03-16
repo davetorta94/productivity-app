@@ -1,4 +1,9 @@
 import { useState } from "react"
+import { TiArrowDown } from "react-icons/ti";
+
+
+
+
 
 
 export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory, updatedTodos }) => {
@@ -44,7 +49,7 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory, upda
           <div className="input-categoria">
             <form onSubmit={updateNewTodo}>
               <input type="text" value={inputValue} onChange={onAddCategory} placeholder="¿Categoria?" />
-                
+              <button type="submit" className="btncategoria"><TiArrowDown /></button>
             </form>
               {todo.category ? <div className="mx-4 my-2 category-style"><p>{todo.category}</p></div> : <p></p>
 
@@ -77,3 +82,8 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo, onNewCategory, upda
     </>
   )
 }
+
+
+
+ 
+
